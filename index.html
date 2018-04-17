@@ -19,26 +19,27 @@
       <div class="tab-pane active" id="encode">
         <!--Encode gui design Starts from here-->
         <div>
-          <h2>Encode message</h2>
+          <h2>Encode Message</h2>
           <p class="alert alert-info">
             To encode a message into an image, choose the image you want to use, enter your text and hit the <strong>Encode</strong> button. <br/>
             Neither the image nor the message you hide will be at any moment transmitted over the web, all the magic happens within your browser.
           </p>
           <form class="form">
+            <h4>Upload Image</h4>
             <div class="form-group">
               <input class="form-control" type="file" accept="image/png, image/jpeg" name="baseFile" onchange="previewEncodeImage()" style="font-weight:bold;font-size:16px;padding:4px;">
             </div>
-
+            <h4>Enter Message</h4>
             <div class="form-group">
               <textarea class="form-control message" rows="3" placeholder="Enter your message here" style="resize:none;font-weight:bold;font-size:16px;"></textarea>
             </div>
-
+            <h4>Enter Password</h4>
             <div class="form-group">
               <input type="password" class="form-control password" rows="3" placeholder="Enter your passsword here" style="resize:none;font-weight:bold;font-size:16px;"></input>
             </div>
 
             <div class="form-group">
-              <button class="encode btn btn-default pull-right" onclick="encodeMessage()" style="font-weight:bold;font-size:16px;">Encode</button>
+              <button class="encode btn btn-default pull-left" onclick="encodeMessage()" style="font-weight:bold;font-size:16px;">Encode</button>
             </div>
           </form>
           <div class="clearfix"></div>
@@ -65,19 +66,21 @@
       <!--Decode gui design Starts from here-->
       <div class="tab-pane" id="decode">
         <div>
-          <h2>Decode image</h2>
+          <h2>Decode Image</h2>
           <p class="alert alert-info">
             To decode a hidden message from an image, just choose an image and hit the <strong>Decode</strong> button.<br/>
           </p>
           <form class="form">
+            <h4>Upload Image</h4>
             <div class="form-group">
               <input class="form-control" type="file" accept="image/png, image/jpeg" name="decodeFile" onchange="previewDecodeImage()" style="font-weight:bold;font-size:16px;padding:4px;">
             </div>
+            <h4>Enter Password</h4>
             <div class="form-group">
               <input type="password" class="form-control checkPassword" rows="3" placeholder="Enter your passsword here" style="resize:none;font-weight:bold;font-size:16px;"></input>
             </div>
             <div class="form-group">
-              <button class="decode btn btn-default pull-right" onclick="decodeMessage()" style="font-weight:bold;font-size:16px;">Decode</button>
+              <button class="decode btn btn-default pull-left" onclick="decodeMessage()" style="font-weight:bold;font-size:16px;">Decode</button>
             </div>
           </form>
           <div class="clearfix"></div>
