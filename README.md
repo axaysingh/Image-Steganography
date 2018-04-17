@@ -39,9 +39,17 @@ Image by Hisashi/Flickr
 
 Here is a side-by-side comparison of the original image and the steganographic image. Can you detect any difference?
 
+## How To Rum
+
+clone it ``` git clone https://github.com/axaysingh/Image-Steganography.git ```
+
+reach to folder ``` cd Image-Steganography ```
+
+run ``` index.html ```
+
 I hope you enjoyed this tutorial and realized just how easy it is to use steganography. It literally only takes a moment to hide secret messages inside media files, and whether you're doing it for copyright protection or just to be cool, steganography has a multitude of applications.
 
 Thanks for reading, and if you have any questions, feel free to ask me.
 
 ## License
-Zircon is made available under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
+Image-Strganography is made available under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
