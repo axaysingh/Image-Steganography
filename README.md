@@ -15,7 +15,6 @@ This technique changes the last few bits in a byte to encode a message, which is
 
 Changing the last two bits in a completely red pixel from 11111111 to 11111101 only changes the red value from 255 to 253, which to the naked eye creates a nearly imperceptible change in color but still allows us to encode data inside of the picture.
 
-
 This diagram shows two 4-pixel images in both color and binary values. Each block of binary represents the value of the corresponding pixel.
 The least significant bit technique works well for media files, where slightly changing byte values creates only slight imperceptible changes, but not so well for things like ASCII text, where a single bit out of place will completely change the character. That's not to mention the fact that data hidden using LSB steganography is also easy to detect if someone is looking for it.
 
@@ -25,3 +24,5 @@ Using Steganography Effectively
 Keeping in mind that certain digital steganography techniques are better than others, generally, it's best to avoid the LSB technique and go for something a bit more sophisticated. In fact, designing your own steganography algorithm isn't terribly difficult if you already have good coding and math foundations. But to get a feel for how steganography works, LSB, which Steghide uses, will do just fine here.
 
 Two other things to consider are encryption and compression. Encrypting data before embedding it adds an extra layer of security while compressing your data will obviously allow you to fit more into your cover file. Both encryption and compressions schemes can be included as optional parameters in Steghide, and we'll cover these below.
+
+Source: https://null-byte.wonderhowto.com/how-to/steganography-hide-secret-data-inside-image-audio-file-seconds-0180936
