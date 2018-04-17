@@ -1,0 +1,105 @@
+<html>
+<head>
+  <title>Steganography Data</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="shortcut icon" href="http://partners.salesforce.com/s/PlatformEncryptionlogo.png" type="image/png" />
+</head>
+<body>
+  <div class="container">
+    <div class="page-header">
+      <h1>Steganography Data</h1>
+    </div>
+
+    <ul class="nav nav-tabs" id="tabs" data-tabs="tabs">
+      <li role="presentation" class="active"> <a href="#encode" data-toggle="tab">Encode</a></li>
+      <li role="presentation"> <a href="#decode" data-toggle="tab">Decode</a></li>
+    </ul>
+
+    <div id="my-tab-content" class="tab-content">
+      <div class="tab-pane active" id="encode">
+        <div>
+          <h2>Encode message</h2>
+          <p class="alert alert-info">
+            To encode a message into an image, choose the image you want to use, enter your text and hit the <strong>Encode</strong> button. <br/>
+            Neither the image nor the message you hide will be at any moment transmitted over the web, all the magic happens within your browser.
+          </p>
+          <form class="form">
+            <div class="form-group">
+              <input class="form-control" type="file" accept="image/png, image/jpeg" name="baseFile" onchange="previewEncodeImage()" style="font-weight:bold;font-size:16px;padding:4px;">
+            </div>
+
+            <div class="form-group">
+              <textarea class="form-control message" rows="3" placeholder="Enter your message here" style="resize:none;font-weight:bold;font-size:16px;"></textarea>
+            </div>
+
+            <div class="form-group">
+              <input type="password" class="form-control password" rows="3" placeholder="Enter your passsword here" style="resize:none;font-weight:bold;font-size:16px;"></input>
+            </div>
+
+            <div class="form-group">
+              <button class="encode btn btn-default pull-right" onclick="encodeMessage()" style="font-weight:bold;font-size:16px;">Encode</button>
+            </div>
+          </form>
+          <div class="clearfix"></div>
+        </div>
+
+        <div class="error" style="display: none;"></div>
+        <div class="binary" style="display: none;">
+          <h3>Binary representation of your message</h3>
+          <textarea class="form-control message" style="word-wrap:break-word;resize:none;font-weight:bold;font-size:16px;">
+          </textarea>
+        </div>
+        <div class="images" style="display: none;">
+          <div class="original" style="display: none;">
+            <canvas hidden style="height:400;width:500;"></canvas>
+          </div>
+          <div class="message" style="display: none;">
+            <h3>Message hidden in Image</h3>
+            <canvas id="canvas" style="max-height:500;max-width:900;!importnat"></canvas><br /><br />
+            <a id="download" class="button" style="display: block;width: 145px;height: 35px;background: #FF0000;text-decoration: none;padding: 7px;text-align: center;border-radius: 5px;color: white;font-weight: bold;font-size:15px;">Download Image</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane" id="decode">
+        <div>
+          <h2>Decode image</h2>
+          <p class="alert alert-info">
+            To decode a hidden message from an image, just choose an image and hit the <strong>Decode</strong> button.<br/>
+          </p>
+          <form class="form">
+            <div class="form-group">
+              <input class="form-control" type="file" accept="image/png, image/jpeg" name="decodeFile" onchange="previewDecodeImage()" style="font-weight:bold;font-size:16px;padding:4px;">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control checkPassword" rows="3" placeholder="Enter your passsword here" style="resize:none;font-weight:bold;font-size:16px;"></input>
+            </div>
+            <div class="form-group">
+              <button class="decode btn btn-default pull-right" onclick="decodeMessage()" style="font-weight:bold;font-size:16px;">Decode</button>
+            </div>
+          </form>
+          <div class="clearfix"></div>
+        </div>
+        <div class="binary-decode" style="display: none;">
+          <h3>Hidden message</h3>
+          <textarea class="form-control message" style="word-wrap:break-word;resize:none;font-weight:bold;font-size:16px;">
+          </textarea>
+        </div>
+        <div class="decode dimage" style="display: none;">
+          <h3>Encoded Image</h3>
+          <canvas style="height:400;width:500;"></canvas>
+        </div>
+      </div>
+
+    </div>
+
+    <footer style="text-align: center; margin-top: 20px; margin-bottom: 10px;">
+      &copy; 2018 by <a href="http://www.yudiz.com/">yudiz</a>
+    </footer>
+  </div>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script type="text/JavaScript" src="script.js"></script>
+</body>
+</html>
