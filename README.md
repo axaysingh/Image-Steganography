@@ -1,2 +1,27 @@
 # Image-Steganography
-This is a tool that's simple, configurable, and only takes a few seconds to hide information in many file types.
+Steganography is the art of hiding information in plain sight, and in this tutorial, I'll show you how to use Steghide — a very simple command line tool to do just that. In addition, I'll go over a bit of conceptual background to help you understand what's going on behind the scenes. This is a tool that's simple, configurable, and only takes a few seconds to hide information in many file types.
+
+What Is Steganography?
+Unlike encryption, where it's obvious that a message is being hidden, steganography hides data in plain view, inside a file such as a picture. As far as images are concerned, to anyone who isn't aware that it contains hidden data, it looks like just a normal, innocent picture.
+
+Steganography is useful in situations where sending encrypted messages might raise suspicion, such as in countries where free speech is suppressed. It's also frequently used as a digital watermark to find when images or audio files are stolen. And on a less practical note — it's just cool.
+
+More Info: A Beginner's Guide to Steganography
+
+How Is Steganography Implemented?
+There are several different techniques for concealing data inside of normal files. One of the most widely used and perhaps simplest to understand is the least significant bit technique, known commonly as LSB.
+
+This technique changes the last few bits in a byte to encode a message, which is especially useful in something like an image, where the red, green, and blue values of each pixel are represented by eight bits (one byte) ranging from 0 to 255 in decimal or 00000000 to 11111111 in binary.
+
+Changing the last two bits in a completely red pixel from 11111111 to 11111101 only changes the red value from 255 to 253, which to the naked eye creates a nearly imperceptible change in color but still allows us to encode data inside of the picture.
+
+
+This diagram shows two 4-pixel images in both color and binary values. Each block of binary represents the value of the corresponding pixel.
+The least significant bit technique works well for media files, where slightly changing byte values creates only slight imperceptible changes, but not so well for things like ASCII text, where a single bit out of place will completely change the character. That's not to mention the fact that data hidden using LSB steganography is also easy to detect if someone is looking for it.
+
+For this reason, there are a plethora of other steganography techniques out there, each with their own benefits and drawbacks. Another far less detectable one is called the discrete cosine transform coefficient technique (I know, it's a mouthful), which slightly changes the weights (coefficients) of the cosine waves that are used to reconstruct a JPEG image.
+
+Using Steganography Effectively
+Keeping in mind that certain digital steganography techniques are better than others, generally, it's best to avoid the LSB technique and go for something a bit more sophisticated. In fact, designing your own steganography algorithm isn't terribly difficult if you already have good coding and math foundations. But to get a feel for how steganography works, LSB, which Steghide uses, will do just fine here.
+
+Two other things to consider are encryption and compression. Encrypting data before embedding it adds an extra layer of security while compressing your data will obviously allow you to fit more into your cover file. Both encryption and compressions schemes can be included as optional parameters in Steghide, and we'll cover these below.
