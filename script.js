@@ -9,6 +9,7 @@ function previewDecodeImage() {
   previewImage(file, ".decode canvas", function() {});
 }
 
+//Preview The Image of Encoded
 function previewEncodeImage() {
   var file = document.querySelector("input[name=baseFile]").files[0];
 
@@ -20,6 +21,7 @@ function previewEncodeImage() {
   });
 }
 
+//Preview the Image Simply
 function previewImage(file, canvasSelector, callback) {
   var reader = new FileReader();
   var image = new Image;
@@ -32,29 +34,25 @@ function previewImage(file, canvasSelector, callback) {
 
   reader.onloadend = function () {
     image.src = URL.createObjectURL(file);
-
     image.onload = function() {
       $canvas.prop({
         'width': image.width,
         'height': image.height
       });
-
       context.drawImage(image, 0, 0);
-
       callback();
     }
   }
 }
 
+/**************** Encoded Code Start From Here ****************/
 function encodeMessage() {
-  /**************** Encoded Code Start From Here ****************/
+
   $(".error").hide();
   $(".binary").hide();
 
   var finaltext =  $("input.password").val() + ' ' + $("textarea.message").val();
-
   var $originalCanvas = $('.original canvas');
-
   var $messageCanvas = $('.message canvas');
 
   var originalContext = $originalCanvas[0].getContext("2d");
@@ -64,12 +62,12 @@ function encodeMessage() {
   var height = $originalCanvas[0].height;
   var ln = (finaltext.length * 8)
   var sz = (width * height * 3);
+
   // Check if the image is big enough to hide the message
   if ((finaltext.length * 8) > (width * height * 3)) {
     $(".error")
-      .text("Text too long for chosen image....")
-      .fadeIn();
-
+    .text("Text too long for chosen image....")
+    .fadeIn();
     return;
   }
 
@@ -126,7 +124,7 @@ function encodeMessage() {
   $(".images .message").fadeIn();
 };
 
-
+/**************** Decoded Code Start From Here ****************/
 function decodeMessage() {
 
   var $originalCanvas = $('.decode canvas');
@@ -140,7 +138,6 @@ function decodeMessage() {
       if(pixel[i + offset] %2 != 0) {
         value = 1;
       }
-
       binaryMessage += value;
     }
   }
@@ -152,12 +149,10 @@ function decodeMessage() {
       c <<= 1;
       c |= parseInt(binaryMessage[i + j]);
     }
-
     output += String.fromCharCode(c);
-
   }
 
-  //password match Code
+  //password checking Code
   result = output.replace(/[^A-Z0-9a-z\s\:",.&#,+()$~%.'":*?<>!`^_=|;{}]/ig,'');
   var print = result.match(/^(\S+)\s(.*)/).slice(1);
   pass = print[0];
